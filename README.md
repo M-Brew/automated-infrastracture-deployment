@@ -1,4 +1,5 @@
 # automated-infrastracture-deployment
+
 Using Terraform to automate the deployment of a simple infrastructure in AWS, including a VPC, subnets, security groups and EC2 instances.
 
 
@@ -21,6 +22,8 @@ availability_zone = ""
 key_name          = ""
 aws_access_key    = ""
 aws_secret_key    = ""
+ami               = ""
+instance_type     = ""
 
 Initialize terraform with the command: terraform init
 Validate code syntax with: terraform validate

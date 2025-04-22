@@ -15,6 +15,8 @@ variable "availability_zone" {}
 variable "key_name" {}
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
+variable "ami" {}
+variable "instance_type" {}
 
 # PROVIDERS
 provider "aws" {
@@ -62,7 +64,7 @@ resource "aws_route_table" "public_route_table" {
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.vpc_1.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-west-2a"
+  availability_zone = var.availability_zone
 
   tags = {
     Name = "public_subnet"
@@ -134,8 +136,8 @@ resource "aws_eip" "one" {
 }
 
 resource "aws_instance" "test_web_server" {
-  ami               = "ami-0cf2b4e024cdb6960"
-  instance_type     = "t2.micro"
+  ami               = var.ami
+  instance_type     = var.instance_type
   availability_zone = var.availability_zone
   key_name          = var.key_name
 
